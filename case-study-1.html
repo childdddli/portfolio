@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing a Flexible Risk Scoring System for Compliance Teams - Case Study 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Serif+Display&family=DM+Serif+Text:ital@0;1&family=DM+Mono:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/case-study.css">
+</head>
+<body class="page-case-study page-case-study--1">
+  <div class="reading-progress" role="progressbar" aria-label="Page reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="reading-progress__bar"></div>
+  </div>
+  <main>
+    <!-- Hook hero (staggered entrance) -->
+    <section class="cs-hero">
+      <div class="cs-hero__inner">
+        <div class="cs-hero__content">
+          <h1 class="cs-hero__title" data-stagger>A single risk scoring methodology was silently excluding <span class="section-heading__accent">~75%</span> of potential customers.</h1>
+          <p class="cs-hero__subtitle" data-stagger>The redesign made the module work for all of them, without adding complexity for anyone.</p>
+        </div>
+      </div>
+      <div class="cs-hero__covers cs-hero__covers--stacked" aria-label="Project cover images">
+        <figure class="cs-hero__cover cs-hero__cover--1">
+          <img src="images/case-study-1/cover-1.png" alt="Case study cover 1">
+        </figure>
+        <figure class="cs-hero__cover cs-hero__cover--2">
+          <img src="images/case-study-1/cover-2.png" alt="Case study cover 2">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 01 • Context -->
+    <section class="cs-context">
+      <div class="cs-context__wrap">
+        <div class="cs-context__body">
+          <h6 class="cs-context__title">01 • Context</h6>
+          <h2 class="section-heading">A <span class="section-heading__accent">module</span> built for one way of thinking</h2>
+          <div class="cs-context__lead-row">
+            <h4 class="cs-context__lead">The Risk Register is the operational core of a GRC platform, the place where compliance teams document, score, and track organizational risk. It's the module risk officers live in daily.</h4>
+            <p>The customer base spans the full spectrum of financial services: small fintechs with lean risk programs, regional credit unions with established frameworks, and large banks with deeply customized methodologies built over years. Each segment has a different way of thinking about risk, and each has a non-negotiable opinion about how it should be scored.</p>
+          </div>
+          <div class="challenge-grid cs-context__breakdown">
+            <div class="challenge-card">
+              <div class="challenge-tag">The old system</div>
+              <h4>A single fixed methodology</h4>
+              <p>Impact × Likelihood = Inherent Risk, then layered with control effectiveness to produce a Residual score. Clean, logical, and familiar, but only if your organization already thought in those terms.</p>
+            </div>
+            <div class="challenge-card">
+              <div class="challenge-tag">The limitation</div>
+              <h4>No flexibility in how scores were composed</h4>
+              <p>No separation between assessment types. No support for amplifier factors, custom dimensions, or weighted aggregation. The model was baked in, take it or leave it.</p>
+            </div>
+            <div class="challenge-card">
+              <div class="challenge-tag">Who was affected</div>
+              <h4>Any prospect whose risk methodology didn't map</h4>
+              <p>In practice, that was the majority. They'd either adapt their workflow to the tool, or walk away.</p>
+            </div>
+            <div class="challenge-card">
+              <div class="challenge-tag">Business cost</div>
+              <h4>A product architecture problem</h4>
+              <p>The module was structurally excluding a large share of qualified customers. It wasn't a sales or pricing problem, it was a product architecture problem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 • Problem -->
+    <section class="cs-context cs-context--problem">
+      <div class="cs-context__wrap">
+        <div class="cs-context__body">
+          <h6 class="cs-context__title">02 • Problem</h6>
+          <h2 class="section-heading">Three mental models, one rigid <span class="section-heading__accent">system</span></h2>
+          <p class="cs-context__intro-p">Through discovery conversations and sales team feedback, a clear picture emerged. The customer base didn't have one way of scoring risk, it had three distinct approaches, each with its own logic and its own expectations for how configuration should work.</p>
+        </div>
+        <aside class="cs-context__stats cs-context__stats--bars">
+          <div class="cs-progress-item">
+            <div class="cs-progress-item__head">
+              <span class="cs-progress-item__label">Standard Model</span>
+              <span class="cs-progress-item__pct">~25%</span>
+            </div>
+            <div class="cs-progress-item__bar">
+              <div class="cs-progress-item__fill" data-progress="25"></div>
+            </div>
+          </div>
+          <div class="cs-progress-item">
+            <div class="cs-progress-item__head">
+              <span class="cs-progress-item__label">Amplifier Model</span>
+              <span class="cs-progress-item__pct">~30%</span>
+            </div>
+            <div class="cs-progress-item__bar">
+              <div class="cs-progress-item__fill" data-progress="30"></div>
+            </div>
+          </div>
+          <div class="cs-progress-item">
+            <div class="cs-progress-item__head">
+              <span class="cs-progress-item__label">Custom Model</span>
+              <span class="cs-progress-item__pct">~45%</span>
+            </div>
+            <div class="cs-progress-item__bar">
+              <div class="cs-progress-item__fill" data-progress="45"></div>
+            </div>
+          </div>
+        </aside>
+        <blockquote class="cs-context__quote">
+          <p>Only the standard model was supported. The amplifier model, where composite factors feed into a final score, required configuration the system didn't offer. The custom model, often used by larger institutions with single-risk-type focus or non-standard logic, broke the matrix concept entirely. Both segments were being turned away or asked to compromise.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Role: 3-column grid -->
+    <section class="cs-role">
+      <div class="cs-inner">
+        <h6 class="section-title">03 • My Role</h6>
+        <h2 class="section-heading">Sole &amp; Lead designer, expert <span class="section-heading__accent">collaboration</span></h2>
+        <div class="cs-role__body">
+          <p>I was the sole designer on this project, responsible for the full arc from discovery through final delivery. The work involved not just interaction design but workflow logic, stakeholder alignment across a cross-functional team, and direct client presentation.</p>
+          <p><strong>Design Ownership</strong> End-to-end UX: discovery, information architecture, interaction design, prototyping, and final design documentation handed off to engineering.</p>
+          <p><strong>Cross-Functional Collaboration</strong> Balanced domain expertise with usability constraints through close partnership with strategy, leadership, and implementation.</p>
+          <p class="cs-role__collaborators">
+            <strong>Collaborators:</strong>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">🛡️</span> Director of Compliance &amp; Strategy</span>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">💼</span> VP</span>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">⚙️</span> Head of Implementation</span>
+          </p>
+          <p><strong>Client Presentation</strong> Presented designs directly to prospect groups across segments, small fintechs, regional banks, large institutions, and credit unions, gathering real-world validation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Challenges: stats-style impact grid (same pattern as Outcome section) -->
+    <section class="cs-challenges">
+      <div class="cs-inner">
+        <h6 class="section-title">04 • Design Challenges</h6>
+        <h2 class="section-heading">One system, three ways of <span class="section-heading__accent">thinking</span></h2>
+        <div class="cs-outcome__impact">
+          <div class="cs-impact__grid cs-impact__grid--stats-style">
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">📌 Standard</span>
+              <p class="cs-impact__label">Standard users already had a mental model that worked. The redesign couldn't slow them down or introduce friction into a workflow they'd already mastered. For this segment, the configurable system needed to feel invisible, the default just needed to work without setup overhead.</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">📈 Amplifier</span>
+              <p class="cs-impact__label">Amplifier users needed control over how multiple input factors were combined and weighted into a final score. The design challenge was giving them meaningful configurability, real influence over the math, without presenting a formula editor that compliance managers shouldn't need to operate.</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">🧩 Custom</span>
+              <p class="cs-impact__label">Custom model users often focused on a single risk dimension, breaking the 2D matrix concept entirely. Their scoring logic didn't map to rows and columns. Designing for this segment meant rethinking how risk output was visualized without making the other model types feel like they'd been compromised to accommodate it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Decisions: split layout, text + table or visual (matches case study 2) -->
+    <section class="cs-decisions">
+      <div class="cs-inner">
+        <h6 class="section-title">05 • Key Decisions</h6>
+        <h2 class="section-heading">Four decisions that <span class="section-heading__accent">defined the system</span></h2>
+        <div class="cs-decisions__list cs-decisions__list--split">
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Configurable Risk Scoring Models</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>The model selection needed to happen early in setup, but without overwhelming users who'd never thought about model types before. The solution was a guided selection step that presented three clearly labeled options with plain-language descriptions and formula previews. Each option only revealed its configuration needs once selected, keeping the initial screen clean. Users who just needed "standard" could be in and out in seconds. Users building something more complex had a clear path forward.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <thead>
+                        <tr>
+                          <th>Model</th>
+                          <th>Who it's for</th>
+                          <th>Setup experience</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Standard</strong></td>
+                          <td>Teams using impact × likelihood + controls</td>
+                          <td>Defaults first; minimal configuration</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Amplifier</strong></td>
+                          <td>Teams stacking weighted sub-factors into a roll-up</td>
+                          <td>Guided hierarchy after model pick</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Custom</strong></td>
+                          <td>Single-dimension focus or non-matrix logic</td>
+                          <td>Dedicated path once selected</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <thead>
+                        <tr>
+                          <th>Level</th>
+                          <th>Rolls up from</th>
+                          <th>What reviewers see</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Overall residual</strong></td>
+                          <td>Domain scores</td>
+                          <td>Top-line score + drill-in</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Domain</strong></td>
+                          <td>Factors</td>
+                          <td>Weight in parent + own score</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Factor</strong></td>
+                          <td>Sub-factors</td>
+                          <td>Contributing inputs + weights</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sub-factor</strong></td>
+                          <td>Raw assessments</td>
+                          <td>Leaf values for audit</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Multi-Layer Risk Aggregation</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>The amplifier model required scores to roll up through multiple levels, sub-factors aggregating into factors, factors into domain scores, domains into an overall residual. The challenge was making this hierarchy traceable without being overwhelming. The design used a collapsible tree structure where each node showed its own score, its weight in the parent calculation, and a clear path back to the contributing inputs. Users could drill in when they needed to audit a result, and collapse back to the summary view when they didn't.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Custom Weighting &amp; Calculations</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>Risk experts care deeply about how their numbers are composed, and have strong opinions about weighting. The design gave them direct control over factor weights through a constrained input system: sliders with percentage values that auto-balanced to 100%, with a live total indicator. The underlying math stayed invisible; users shaped it through intent, not formulas. Edge cases, like a user trying to submit with weights that didn't sum correctly, were handled with inline validation rather than error states after submission.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--tilt">
+                  <img
+                    src="images/case-study-1/key-decision-a.png"
+                    alt="Custom weighting UI: sliders with a live total and inline validation"
+                    width="1440"
+                    height="1280"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <thead>
+                        <tr>
+                          <th>Output type</th>
+                          <th>Visualization</th>
+                          <th>Rationale</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Standard &amp; amplifier</strong></td>
+                          <td>Dynamic 5×5 matrix from configured ranges</td>
+                          <td>Familiar grid; reflects true 2D scores</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Custom (single dimension)</strong></td>
+                          <td>Linear scale, same risk color banding</td>
+                          <td>No false 2D read when data isn't matrix-shaped</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Adaptive Risk Matrix Visualization</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>The 5×5 risk matrix is one of the most recognizable artifacts in compliance work, and one of the most opinionated. The challenge was making the visualization adapt to reflect each model's output accurately, rather than forcing every output into a 2D grid that might not fit. For standard and amplifier models, the matrix rendered dynamically based on configured scoring ranges. For custom models with single-dimension outputs, the visualization shifted to a linear scale, preserving the familiar risk-color coding without misrepresenting the data as two-dimensional when it wasn't.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome: final design + impact combined -->
+    <section class="cs-outcome">
+      <div class="cs-inner">
+        <h6 class="section-title">06 • Outcome</h6>
+        <h2 class="section-heading">A module that finally fit the <span class="section-heading__accent">market</span></h2>
+        <p class="cs-context__intro-p">The designs were presented directly to prospect groups across the full customer spectrum, small fintechs, regional banks, large institutions, and credit unions. The reception was consistent: the flexibility mapped cleanly to how each segment already thought about risk, without asking them to adapt their methodology to the tool.</p>
+        <div class="cs-outcome__impact">
+          <div class="cs-outcome__overview">
+            <div class="cs-outcome__overview-frame">
+              <img class="cs-outcome__overview-img" src="images/case-study-1/outcome.png" alt="Delivered risk scoring module: configuration and flows shown as presented to prospect groups across segments.">
+            </div>
+          </div>
+          <div class="cs-impact__grid cs-impact__grid--stats-style">
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">3×</span>
+              <p class="cs-impact__label">Addressable customer segments supported by a single module configuration system</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">~75%</span>
+              <p class="cs-impact__label">Of previously excluded customers now accommodated by the redesigned system</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">4</span>
+              <p class="cs-impact__label">Prospect groups validated across segments, positive reception across all of them</p>
+            </div>
+          </div>
+        </div>
+        <blockquote class="cs-context__quote">
+          <p>The most significant outcome wasn't a metric, it was that the module stopped being a blocker. Prospects who'd previously been told the platform "didn't quite fit" their risk methodology now had a path forward. The design work turned a structural product limitation into a genuine competitive differentiator.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="cs-reflection">
+      <div class="cs-inner">
+        <h6 class="section-title">07 • Reflection</h6>
+        <h2 class="section-heading">What I learned about designing for <span class="section-heading__accent">configurability</span></h2>
+        <div class="cs-reflection__body">
+          <p><strong>Hardest part</strong> Designing simultaneously for risk novices and deeply opinionated experts. A compliance officer at a large bank has spent years refining a methodology, they don't want to be guided through a wizard. A lean fintech team wants exactly that. The solution was progressive disclosure done seriously: the system always started simple, but never treated advanced users like they needed hand-holding to get to the configuration they came for.</p>
+          <p><strong>What I'd revisit</strong> The custom model experience still felt like a slightly diminished version of the amplifier flow rather than a fully first-class path. Given more runway, I'd have pushed for a dedicated configuration paradigm for single-dimension scoring, one that didn't carry any visual residue of the 2D matrix model. The matrix metaphor is strong and familiar, but it can also be a cage when the underlying data doesn't fit it.</p>
+          <p><strong>What this taught me</strong> Configurability and simplicity aren't opposites, they're sequencing problems. The system doesn't need to hide complexity; it needs to introduce it at the right moment, to the right user, with the right framing. The instinct to simplify by reducing options is often wrong. The right move is to simplify by clarifying which options belong to which context, and trusting that users can handle more when it's presented on their terms.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="site-footer-actions">
+    <a href="index.html#case-studies" class="hero__cta">← Back to work</a>
+  </div>
+  <footer class="site-footer">
+    <div class="site-footer__spheres" aria-hidden="true">
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+    </div>
+    <div class="site-footer__brand">
+      <h5 class="site-footer__tagline" aria-label="Every detail is a decision">Every <span class="site-footer__tagline-detail">detail</span><span class="site-footer__tagline-bridge"> is a </span><span class="site-footer__tagline-decision">decision</span></h5>
+      <p class="site-footer__copyright">© 2026 Child Li</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/case-study.js"></script>
+</body>
+</html>

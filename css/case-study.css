@@ -1,0 +1,1507 @@
+/* ============================================
+   Case study page (shared with case-study-1/2/3)
+   ============================================ */
+
+/* --- Scroll-into-view fade-in: sections animate when entering viewport --- */
+.page-case-study main > section {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.page-case-study main > section.cs-section--in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-case-study {
+  --cs-case-box-gap: 1.5rem; /* 24px — unified gap for stat / role / challenge / impact grids */
+}
+.page-case-study--1 {
+  --cs-page-accent-solid: var(--color-accent-1-solid);
+  --cs-breakdown-blob-url: url("../images/blobs/blob-1.svg");
+}
+.page-case-study--2 {
+  --cs-page-accent-solid: var(--color-accent-2-solid);
+  --cs-breakdown-blob-url: url("../images/blobs/blob-2.svg");
+}
+.page-case-study--3 {
+  --cs-page-accent-solid: var(--color-accent-3-solid);
+  --cs-breakdown-blob-url: url("../images/blobs/blob-3.svg");
+}
+
+.page-case-study main p,
+.page-case-study .site-footer-actions {
+  font-size: 1.1em;
+}
+
+/* --- Case study: full-width sections, constrained inner content --- */
+/* Override global section max-width so 90% is based on viewport, not 72rem */
+.page-case-study main section {
+  max-width: none;
+}
+/* Hero (header): can be wider */
+.cs-hero__inner {
+  width: 90%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Section content (Context, Role, Challenges, Decisions, Outcome, Reflection): max 960px */
+.cs-context__wrap,
+.cs-inner {
+  width: 90%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- CS Hero: hook + staggered entrance --- */
+.cs-hero {
+  --cs-blob-url: url("../images/blobs/blob-1.svg");
+  /* Matches homepage case-card background for each project (accent 1 / 2 / 3) */
+  --cs-blob-color: var(--color-accent-1);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  background: var(--color-bg);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.cs-hero::before,
+.cs-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.cs-hero::after {
+  opacity: 0.42;
+}
+/* Blob shape from SVG; fill = per–case-study tint (same as homepage card bg) */
+.cs-hero::before {
+  width: clamp(320px, 50vw, 800px);
+  height: clamp(320px, 50vw, 800px);
+  top: 0;
+  /* Shift ~10% of hero width past the right edge (blob sits further right) */
+  right: -10%;
+  transform-origin: top right;
+  background-color: var(--cs-blob-color);
+  -webkit-mask-image: var(--cs-blob-url);
+  mask-image: var(--cs-blob-url);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  animation: cs-blob-float-1 14s ease-in-out infinite;
+}
+.cs-hero::after {
+  display: none;
+}
+.cs-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: end;
+}
+@media (min-width: 56rem) {
+  .cs-hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 38%);
+  }
+}
+.cs-hero__content {
+  max-width: 42rem;
+}
+.cs-hero__media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  align-self: end;
+}
+.cs-hero__covers {
+  /* Case study 1: stacked covers at top right */
+  position: absolute;
+  top: var(--space-2xl);
+  right: var(--space-lg);
+  z-index: 2;
+}
+.cs-hero__covers--stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+.page-case-study--1 .cs-hero__cover {
+  width: 30vw;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 24px 0 rgba(77, 74, 236, 0.10);
+  flex-shrink: 0;
+}
+.page-case-study--1 .cs-hero__cover--1 {
+  transform: rotate(-8deg);
+  margin-right: 20%;
+  z-index: 1;
+  position: relative;
+}
+.page-case-study--1 .cs-hero__cover--2 {
+  transform: rotate(8deg);
+  margin-top: -20%;
+  margin-right: -10%;
+  z-index: 2;
+  position: relative;
+}
+.page-case-study--1 .cs-hero__cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+.page-case-study--1 .cs-hero__covers:not(:has(img)) {
+  display: none;
+}
+
+/* Case study 2: stacked covers, no rotation (cover 2 on top of cover 1) */
+.page-case-study--2 .cs-hero__cover {
+  width: 30vw;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 24px 0 rgba(77, 74, 236, 0.10);
+  flex-shrink: 0;
+}
+.page-case-study--2 .cs-hero__cover--1 {
+  z-index: 1;
+  position: relative;
+}
+.page-case-study--2 .cs-hero__cover--2 {
+  margin-top: -20%;
+  margin-right: -10%;
+  z-index: 2;
+  position: relative;
+}
+.page-case-study--2 .cs-hero__cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+.page-case-study--2 .cs-hero__covers:not(:has(img)) {
+  display: none;
+}
+
+/* Case study 3: parallel covers (3 side by side) */
+.page-case-study--3 .cs-hero__covers {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+.page-case-study--3 .cs-hero__cover {
+  width: 12vw;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 24px 0 rgba(77, 74, 236, 0.10);
+  flex-shrink: 0;
+  transform: rotate(8deg);
+}
+.page-case-study--3 .cs-hero__cover--1 {
+  margin: 0;
+  margin-top: 0;
+  z-index: 1;
+  position: relative;
+}
+.page-case-study--3 .cs-hero__cover--2 {
+  margin: 0;
+  margin-top: 40px;
+  z-index: 1;
+  position: relative;
+}
+.page-case-study--3 .cs-hero__cover--3 {
+  margin: 0;
+  margin-top: 80px;
+  z-index: 1;
+  position: relative;
+}
+.page-case-study--3 .cs-hero__cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+.page-case-study--3 .cs-hero__covers:not(:has(img)) {
+  display: none;
+}
+
+.cs-hero__cover {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-height: 180px;
+  backdrop-filter: saturate(120%) blur(4px);
+}
+.cs-hero__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cs-hero__cover:not(:has(img)) {
+  display: none;
+}
+.cs-hero__media:not(:has(img)) {
+  display: none;
+}
+.cs-hero__cover--single {
+  grid-column: 1 / -1;
+}
+@media (max-width: 40rem) {
+  .cs-hero__media {
+    grid-template-columns: 1fr;
+  }
+}
+@keyframes cs-blob-float-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-14px, 10px, 0) scale(1.05); }
+}
+@keyframes cs-blob-float-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(10px, 8px, 0) scale(0.98); }
+}
+/* Unified breakdown blob: translate + scale (rotation is separate for continuous spin) */
+@keyframes cs-blob-float-unified {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  16% { transform: translate3d(26px, -20px, 0) scale(1.015); }
+  33% { transform: translate3d(-10px, 8px, 0) scale(1.022); }
+  50% { transform: translate3d(-28px, 28px, 0) scale(1.018); }
+  66% { transform: translate3d(12px, 10px, 0) scale(1.025); }
+  83% { transform: translate3d(8px, -26px, 0) scale(1.012); }
+}
+@keyframes cs-blob-spin {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+.cs-hero [data-stagger] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: cs-stagger-in 0.8s ease forwards;
+}
+.cs-hero [data-stagger]:nth-child(1) { animation-delay: 0.1s; }
+.cs-hero [data-stagger]:nth-child(2) { animation-delay: 0.25s; }
+.cs-hero [data-stagger]:nth-child(3) { animation-delay: 0.4s; }
+@keyframes cs-stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.cs-hero__title {
+  font-size: var(--text-h1);
+  margin: 0 0 var(--space-md);
+  max-width: 20ch;
+}
+.cs-hero__subtitle {
+  font-family: var(--font-subtitle);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 42ch;
+}
+
+/* Per-case: blob SVG + tint = homepage case-card background for that project */
+.page-case-study--1 .cs-hero {
+  --cs-blob-url: url("../images/blobs/blob-1.svg");
+  --cs-blob-color: var(--color-accent-1);
+}
+.page-case-study--2 .cs-hero {
+  --cs-blob-url: url("../images/blobs/blob-2.svg");
+  --cs-blob-color: var(--color-accent-2);
+}
+.page-case-study--3 .cs-hero {
+  --cs-blob-url: url("../images/blobs/blob-3.svg");
+  --cs-blob-color: var(--color-accent-3);
+}
+
+/* Blob + cover images: desktop only (hide tablet/mobile) */
+@media (max-width: 47.9375rem) {
+  .cs-hero::before,
+  .cs-hero::after {
+    display: none !important;
+  }
+  .cs-hero__media,
+  .cs-hero__covers {
+    display: none !important;
+  }
+}
+
+/* --- Context + stats sidebar --- */
+.cs-context {
+  width: 100%;
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--color-bg);
+  outline: none;
+}
+.cs-context__wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Vertical stack: body → stats → quote (problem) / body+stats (other) */
+  row-gap: var(--space-lg);
+}
+.cs-context__wrap > .cs-context__body,
+.cs-context__wrap > .cs-context__stats,
+.cs-context__wrap > .cs-context__quote {
+  margin: 0;
+  min-width: 0;
+}
+/* Case study 1 problem stack: ~60px — same as outcome impact rhythm */
+.cs-context--problem .cs-context__wrap {
+  row-gap: 3.75rem;
+}
+/* Case study 2 context: ~60px between body (lead-row) + stats column */
+.page-case-study--2 .cs-context .cs-context__wrap {
+  row-gap: 3.75rem;
+}
+.cs-context__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--cs-case-box-gap);
+}
+.cs-context__stats--bars {
+  grid-template-columns: 1fr;
+  gap: var(--cs-case-box-gap);
+}
+.cs-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cs-progress-item__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cs-progress-item__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-h5);
+  line-height: 1.1em;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.cs-progress-item__pct {
+  font-family: var(--font-subtitle);
+  font-size: var(--text-h5);
+  line-height: 1.1em;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+.cs-progress-item__bar {
+  height: 0.5rem;
+  background: var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.cs-progress-item__fill {
+  width: 0%;
+  height: 100%;
+  border-radius: var(--radius);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cs-page-accent-solid, var(--color-accent)) 10%, transparent),
+    color-mix(in srgb, var(--cs-page-accent-solid, var(--color-accent)) 80%, transparent)
+  );
+  transition: width 0.9s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.cs-context__stats--bars .cs-progress-item:nth-child(1) .cs-progress-item__fill {
+  transition-delay: 0s;
+}
+.cs-context__stats--bars .cs-progress-item:nth-child(2) .cs-progress-item__fill {
+  transition-delay: 0.08s;
+}
+.cs-context__stats--bars .cs-progress-item:nth-child(3) .cs-progress-item__fill {
+  transition-delay: 0.16s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-progress-item__fill {
+    transition-duration: 0.01ms;
+    transition-delay: 0s;
+  }
+}
+.cs-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+}
+/* Stat / role / challenge / impact “boxes”: project accent @ 8%, no stroke */
+.page-case-study .cs-context__stats .cs-stat,
+.page-case-study .cs-role__body,
+.page-case-study .challenge-grid .challenge-card,
+.page-case-study .cs-impact__grid--stats-style .cs-impact__card {
+  background: color-mix(in srgb, var(--cs-page-accent-solid) 8%, transparent);
+  border: none;
+  outline: none;
+}
+.cs-stat__value {
+  font-family: var(--font-title);
+  font-size: var(--text-h5);
+  font-weight: 400;
+  line-height: 1.1em;
+  color: var(--color-text);
+}
+.cs-stat__label {
+  font-family: 'DM Mono', ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+.page-case-study .cs-context__stats .cs-stat__value {
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.2em;
+  color: var(--color-text);
+}
+.cs-context__stats .cs-stat__label {
+  font-family: var(--font-sans);
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+/* Eyebrow labels: context + numbered section titles (mono, muted) — casing from markup */
+.cs-context__title,
+.cs-role .section-title,
+.cs-challenges .section-title,
+.cs-decisions .section-title,
+.cs-outcome .section-title,
+.cs-reflection .section-title {
+  font-family: var(--font-subtitle);
+  font-size: 1em;
+  margin: 0 0 0.1rem;
+  padding-bottom: 8px;
+  color: var(--color-text-muted);
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+
+/* Section heading (h2) — DM Serif Text, shown under each subtitle */
+.section-heading {
+  font-family: var(--font-title);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  line-height: 1em;
+  margin: 0 0 3rem;
+  max-width: 640px;
+}
+.section-heading__accent {
+  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
+}
+/* Case study 1: heading accents use project accent 1 @ 0.8 */
+.page-case-study--1 .section-heading__accent {
+  color: color-mix(in srgb, var(--color-accent-1-solid) 80%, transparent);
+}
+/* Case study 3: heading accents use project accent 3 @ 0.8 */
+.page-case-study--3 .section-heading__accent {
+  color: color-mix(in srgb, var(--color-accent-3-solid) 80%, transparent);
+}
+.cs-context__body .section-heading {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+/* Match .cs-inner rhythm: eyebrow + h2 sit tight (padding on title only), not row-gap + padding */
+.cs-context__body .cs-context__title + .section-heading {
+  margin-top: calc(-1 * var(--space-lg));
+}
+.cs-context__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: var(--space-lg);
+  column-gap: 1rem;
+}
+.cs-context__body .cs-context__title {
+  grid-column: 1 / -1;
+}
+/* Lead + paired copy: grouped for padding / gap control */
+.cs-context__lead-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  row-gap: 0;
+  align-items: start;
+  min-width: 0;
+}
+.cs-context__lead-row .cs-context__lead {
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.1em;
+  margin: 0;
+  color: var(--color-text);
+  min-width: 0;
+}
+.cs-context__lead-row > p {
+  font-family: var(--font-sans);
+  margin: 0;
+  color: var(--color-text);
+  min-width: 0;
+}
+.cs-context__lead-row .cs-context__intro-p {
+  margin: 0;
+  max-width: none;
+}
+.cs-context__body > p {
+  grid-column: 1 / -1;
+  max-width: 640px;
+}
+.cs-context__breakdown {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+.cs-context__breakdown.challenge-grid {
+  gap: var(--cs-case-box-gap);
+}
+
+/*
+ * Unified blob: CS1 = context breakdown; CS2/3 = design-challenges grid (4 boxes).
+ * Uses --cs-page-accent-solid + --cs-breakdown-blob-url per .page-case-study--N.
+ */
+:is(
+  .page-case-study--1 .cs-context__breakdown.challenge-grid,
+  .page-case-study--2 .cs-challenges .challenge-grid,
+  .page-case-study--3 .cs-challenges .challenge-grid
+) > .challenge-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+:is(
+  .page-case-study--1 .cs-context__breakdown.challenge-grid,
+  .page-case-study--2 .cs-challenges .challenge-grid,
+  .page-case-study--3 .cs-challenges .challenge-grid
+) > .challenge-card::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  background-color: color-mix(in srgb, var(--cs-page-accent-solid) 12%, transparent);
+  -webkit-mask-image: var(--cs-breakdown-blob-url);
+  mask-image: var(--cs-breakdown-blob-url);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  /* Smaller silhouette; sit toward lower-right (30% past center on both axes) */
+  -webkit-mask-size: 52% auto;
+  mask-size: 52% auto;
+  -webkit-mask-position: calc(50% + 30%) calc(50% + 30%);
+  mask-position: calc(50% + 30%) calc(50% + 30%);
+  transform-origin: calc(50% + 30%) calc(50% + 30%);
+  animation:
+    cs-blob-float-unified 12s cubic-bezier(0.42, 0, 0.58, 1) infinite,
+    cs-blob-spin 60s linear infinite;
+  /* Mobile: 1×4 stack — shared vertical canvas */
+  width: 100%;
+  height: calc(400% + 3 * var(--cs-case-box-gap));
+  left: 0;
+  top: 0;
+}
+/* Case study 2: larger blob; fixed mask anchor 10% from left, 20% from top */
+.page-case-study--2 .cs-challenges .challenge-grid > .challenge-card::before {
+  -webkit-mask-size: 64% auto;
+  mask-size: 64% auto;
+  -webkit-mask-position: 10% 20%;
+  mask-position: 10% 20%;
+  transform-origin: 10% 20%;
+}
+:is(
+  .page-case-study--1 .cs-context__breakdown.challenge-grid,
+  .page-case-study--2 .cs-challenges .challenge-grid,
+  .page-case-study--3 .cs-challenges .challenge-grid
+) > .challenge-card:nth-child(2)::before {
+  top: calc(-1 * (100% + var(--cs-case-box-gap)));
+}
+:is(
+  .page-case-study--1 .cs-context__breakdown.challenge-grid,
+  .page-case-study--2 .cs-challenges .challenge-grid,
+  .page-case-study--3 .cs-challenges .challenge-grid
+) > .challenge-card:nth-child(3)::before {
+  top: calc(-2 * (100% + var(--cs-case-box-gap)));
+}
+:is(
+  .page-case-study--1 .cs-context__breakdown.challenge-grid,
+  .page-case-study--2 .cs-challenges .challenge-grid,
+  .page-case-study--3 .cs-challenges .challenge-grid
+) > .challenge-card:nth-child(4)::before {
+  top: calc(-3 * (100% + var(--cs-case-box-gap)));
+}
+@media (min-width: 40rem) {
+  :is(
+    .page-case-study--1 .cs-context__breakdown.challenge-grid,
+    .page-case-study--2 .cs-challenges .challenge-grid,
+    .page-case-study--3 .cs-challenges .challenge-grid
+  ) > .challenge-card::before {
+    /* Desktop: 2×2 — shared canvas (200% + gap each axis, % = card own size) */
+    width: calc(200% + var(--cs-case-box-gap));
+    height: calc(200% + var(--cs-case-box-gap));
+    top: 0;
+  }
+  :is(
+    .page-case-study--1 .cs-context__breakdown.challenge-grid,
+    .page-case-study--2 .cs-challenges .challenge-grid,
+    .page-case-study--3 .cs-challenges .challenge-grid
+  ) > .challenge-card:nth-child(1)::before {
+    left: 0;
+    top: 0;
+  }
+  :is(
+    .page-case-study--1 .cs-context__breakdown.challenge-grid,
+    .page-case-study--2 .cs-challenges .challenge-grid,
+    .page-case-study--3 .cs-challenges .challenge-grid
+  ) > .challenge-card:nth-child(2)::before {
+    left: calc(-100% - var(--cs-case-box-gap));
+    top: 0;
+  }
+  :is(
+    .page-case-study--1 .cs-context__breakdown.challenge-grid,
+    .page-case-study--2 .cs-challenges .challenge-grid,
+    .page-case-study--3 .cs-challenges .challenge-grid
+  ) > .challenge-card:nth-child(3)::before {
+    left: 0;
+    top: calc(-100% - var(--cs-case-box-gap));
+  }
+  :is(
+    .page-case-study--1 .cs-context__breakdown.challenge-grid,
+    .page-case-study--2 .cs-challenges .challenge-grid,
+    .page-case-study--3 .cs-challenges .challenge-grid
+  ) > .challenge-card:nth-child(4)::before {
+    left: calc(-100% - var(--cs-case-box-gap));
+    top: calc(-100% - var(--cs-case-box-gap));
+  }
+}
+:is(
+  .page-case-study--1 .cs-context__breakdown.challenge-grid,
+  .page-case-study--2 .cs-challenges .challenge-grid,
+  .page-case-study--3 .cs-challenges .challenge-grid
+) > .challenge-card > * {
+  position: relative;
+  z-index: 1;
+}
+.cs-context__body p {
+  font-family: var(--font-sans);
+  margin: 0;
+  color: var(--color-text);
+}
+.cs-context__intro-p {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text);
+  max-width: 640px;
+}
+.cs-context__body > .cs-context__intro-p {
+  align-self: start;
+  grid-column: 1 / -1;
+  margin: 0;
+}
+.cs-context__table-wrap {
+  margin: 0 0 var(--space-lg);
+  overflow-x: auto;
+  grid-column: 1 / -1;
+}
+.cs-context__table {
+  width: 100%;
+  min-width: 280px;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.95em;
+}
+.cs-context__table th,
+.cs-context__table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.cs-context__table thead th {
+  border-top: 1px solid var(--color-border);
+}
+.cs-context__table th {
+  font-family: var(--font-subtitle);
+  font-size: var(--text-h6);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.cs-context__table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.9);
+}
+.cs-context__quote {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-subtitle);
+  font-size: 1.35em;
+  line-height: 1.45;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-text);
+  grid-column: 1 / -1;
+}
+.cs-context__quote::before {
+  content: "\201C";
+  flex-shrink: 0;
+  font-family: "DM Serif Display", "DM Serif Text", Georgia, serif;
+  font-size: 4em;
+  line-height: 1;
+  font-style: normal;
+  color: var(--cs-page-accent-solid, var(--color-accent));
+}
+.page-case-study .cs-context__quote > p {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+.cs-context__problems-intro {
+  margin: var(--space-lg) 0 0;
+  grid-column: 1 / -1;
+}
+.cs-context__body .cs-context__problems-intro {
+  margin-top: 0;
+}
+@media (max-width: 40rem) {
+  .cs-context__body {
+    grid-template-columns: 1fr;
+  }
+  .cs-context__lead-row {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-lg);
+  }
+}
+
+/* --- Role: 3-column grid --- */
+.cs-role {
+  width: 100%;
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--color-bg);
+  outline: none;
+}
+.cs-role__grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 40rem) {
+  .cs-role__grid { grid-template-columns: repeat(3, 1fr); }
+}
+.cs-role__body {
+  width: 100%;
+  padding: var(--space-xl);
+  border-radius: var(--radius);
+}
+.cs-role__body .cs-role__subtitle {
+  margin: 0 0 var(--space-md);
+  font-size: var(--text-h4);
+}
+.cs-role__body p {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+.cs-role__body p:last-child {
+  margin-bottom: 0;
+}
+.cs-role__body p strong {
+  display: block;
+  margin-bottom: 0.25em;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.cs-role__body .cs-role__collaborators {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35em;
+}
+.cs-role__body .cs-role__collaborators strong {
+  margin-bottom: 0;
+}
+.cs-role__body .cs-role__collaborator-emoji {
+  margin-right: 0.4em;
+}
+.cs-role__item {
+  padding: var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.cs-role__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+.cs-role__value {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* --- Design Challenges: expandable accordion (3–4 per project) --- */
+.cs-challenges {
+  width: 100%;
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--color-bg);
+  outline: none;
+}
+.cs-challenges__list { display: flex; flex-direction: column; gap: 0; }
+
+/* Design challenges (case study 1): same strip as outcome impact stats */
+.cs-challenges .cs-outcome__impact {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Case study 3: challenge cards grid (no accordion) */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cs-case-box-gap);
+  margin-top: var(--space-lg);
+}
+@media (min-width: 40rem) {
+  .challenge-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.challenge-card {
+  padding: var(--space-xl);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.challenge-tag {
+  font-family: var(--font-subtitle);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+.page-case-study .challenge-grid .challenge-tag {
+  color: var(--cs-page-accent-solid);
+}
+.challenge-card h4 {
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.2em;
+  margin: 0;
+  color: var(--color-text);
+}
+.challenge-card p {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.cs-challenge {
+  border: none;
+}
+.cs-challenge__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.8s;
+}
+.cs-challenge__head:hover { color: var(--color-accent); }
+.cs-challenge__title {
+  flex: 1;
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.1em;
+  margin: 0;
+}
+.cs-challenge__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  position: relative;
+  transition: transform 0.8s ease;
+}
+.cs-challenge__icon::before,
+.cs-challenge__icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  border-radius: 1px;
+}
+.cs-challenge__icon::before {
+  width: 10px;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.cs-challenge__icon::after {
+  width: 2px;
+  height: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.cs-challenge[data-open] .cs-challenge__icon { transform: rotate(45deg); }
+.cs-challenge__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.8s ease;
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.cs-challenge__body > .cs-challenge__body-inner {
+  overflow: hidden;
+  min-height: 0;
+  visibility: hidden;
+}
+.cs-challenge[data-open] .cs-challenge__body { grid-template-rows: 1fr; }
+.cs-challenge[data-open] .cs-challenge__body > .cs-challenge__body-inner {
+  visibility: visible;
+}
+.cs-challenge__body-inner {
+  padding: 0 0 var(--space-md) 0;
+}
+@media (min-width: 40rem) {
+  .cs-challenge__body-inner { padding-left: 0; }
+}
+.cs-challenge__body p {
+  font-family: var(--font-sans);
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* --- Key Decisions: always-visible list (no accordion) --- */
+.cs-decisions {
+  width: 100%;
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--color-bg);
+  outline: none;
+}
+.cs-decisions__list { display: flex; flex-direction: column; gap: 0; }
+.cs-decision {
+  border: none;
+}
+.cs-decision__head-static {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.cs-decision__title {
+  flex: 1;
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.1em;
+  margin: 0 0 2rem;
+}
+.cs-decision__body--open,
+.cs-decision__body.cs-decision__body--open {
+  display: block;
+  grid-template-rows: none;
+}
+.cs-decision__body--open > .cs-decision__body-inner,
+.cs-decision__body.cs-decision__body--open > .cs-decision__body-inner {
+  visibility: visible;
+  overflow: visible;
+  min-height: 0;
+}
+.cs-decision__body-inner {
+  padding: 0 0 var(--space-md) var(--space-md);
+}
+@media (min-width: 40rem) {
+  .cs-decision__body-inner { padding-left: 0px; }
+}
+.cs-decision__body p {
+  font-family: var(--font-sans);
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+.cs-decision__body p + p {
+  margin-top: var(--space-sm);
+}
+.cs-decision__body ul {
+  margin: var(--space-sm) 0;
+  padding-left: 1.5em;
+  font-family: var(--font-sans);
+  font-size: 1.1em;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+.cs-decision__body ul li {
+  margin-bottom: 0.25em;
+}
+.cs-decision__table-wrap {
+  margin: var(--space-md) 0;
+  overflow-x: auto;
+}
+.cs-decision__examples {
+  margin-top: var(--space-lg);
+}
+.cs-decision__example-title {
+  margin-top: var(--space-md) !important;
+  margin-bottom: 0.25em !important;
+  color: var(--color-text) !important;
+}
+.cs-decision__examples ul {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+}
+
+/* Key decisions: text | image split layout (case study 2) */
+.cs-decisions__list--split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+.cs-decision--split {
+  border: none;
+  padding: 0;
+}
+.cs-decision--split .cs-decision__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+@media (min-width: 50rem) {
+  .cs-decision--split .cs-decision__row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+}
+.cs-decision--split .cs-decision__content {
+  min-width: 0;
+}
+.cs-decision--split .cs-decision__media {
+  min-width: 0;
+}
+/* Same fill as challenge cards / stats / impact boxes (per-page accent @ 8%) */
+.page-case-study .cs-decision__frame {
+  aspect-ratio: 4/3;
+  background: color-mix(in srgb, var(--cs-page-accent-solid) 8%, transparent);
+  border-radius: var(--radius);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cs-decision__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Tilted mock: width-led scaling, 10% translate, clipped to frame */
+.page-case-study .cs-decision__frame--tilt {
+  overflow: hidden;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0;
+}
+.page-case-study .cs-decision__frame--tilt img {
+  width: min(1296px, 120%);
+  height: auto;
+  /* Remove height cap; frame clipping handles overflow after rotate/translate */
+  max-width: none;
+  max-height: none;
+  object-fit: initial;
+  flex-shrink: 1;
+  min-width: 0;
+  transform: translate(18%, 10%) rotate(-15deg);
+  transform-origin: bottom right;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px 0 rgba(77, 74, 236, 0.1);
+}
+.page-case-study .cs-decision__frame--tilt .cs-decision__img--a {
+  transform: translate(28%, 10%) rotate(-15deg);
+}
+.page-case-study .cs-decision__frame--tilt .cs-decision__img--b {
+  width: 85%;
+  transform: translate(14%, 6%) rotate(-15deg);
+}
+.page-case-study--3 .cs-decision__frame--tilt .cs-decision__img--cs3-a {
+  width: 50%;
+  transform: translate(-16%, -12%) rotate(15deg);
+}
+.page-case-study--3 .cs-decision__frame--cs3-a {
+  align-items: center;
+  justify-content: center;
+}
+.page-case-study .cs-decision__frame.cs-decision__frame--table {
+  align-items: stretch;
+  justify-content: flex-start;
+  /* Override base .page-case-study .cs-decision__frame aspect-ratio:4/3 (higher specificity than .cs-decision__frame--table alone) */
+  aspect-ratio: auto;
+  /* Let stacked / tall tables grow; base frame uses overflow:hidden which clips vertically */
+  overflow: visible;
+}
+.cs-decision__frame--table {
+  aspect-ratio: auto;
+  min-height: 12rem;
+  /* Tighter than context tables: frame inset + compact rows */
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: var(--space-sm);
+}
+.cs-decision__frame--table .cs-decision__table-wrap {
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  flex-shrink: 0; /* don't compress table area inside fixed aspect-ratio / flex parents */
+}
+/* Match column widths across stacked 2-col tables (same % on each table) */
+.cs-decision__frame--table-fixed-cols .cs-context__table {
+  table-layout: fixed;
+}
+.cs-decision__frame--table-fixed-cols .cs-context__table th:nth-child(1),
+.cs-decision__frame--table-fixed-cols .cs-context__table td:nth-child(1) {
+  width: 40%;
+}
+.cs-decision__frame--table-fixed-cols .cs-context__table th:nth-child(2),
+.cs-decision__frame--table-fixed-cols .cs-context__table td:nth-child(2) {
+  width: 60%;
+}
+.cs-decision__table-caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.1em;
+  font-style: normal;
+  padding: 0 0 var(--space-xs);
+  color: var(--color-text);
+}
+.cs-decision__frame--table .cs-context__table {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.85em;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.cs-decision__frame--table .cs-context__table th,
+.cs-decision__frame--table .cs-context__table td {
+  background: transparent;
+  padding: 0.6875rem 1rem; /* 11px vertical — tighter than body context tables */
+  line-height: 1.35;
+}
+.cs-decision__frame--table .cs-context__table thead th {
+  border-top: none;
+  background: color-mix(in srgb, var(--cs-page-accent-solid) 8%, transparent);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.cs-decision__frame--table .cs-context__table thead th:first-child {
+  border-top-left-radius: 4px;
+}
+.cs-decision__frame--table .cs-context__table thead th:last-child {
+  border-top-right-radius: 4px;
+}
+.cs-decision__frame--table .cs-context__table tbody tr:last-child td {
+  border-bottom: none;
+}
+.cs-decision__frame--table .cs-context__table tbody tr:hover td {
+  background: color-mix(in srgb, var(--cs-page-accent-solid) 14%, transparent);
+}
+.cs-decision__frame .placeholder {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+/* --- Outcome: final design + impact combined --- */
+.cs-outcome {
+  width: 100%;
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--color-bg);
+  outline: none;
+}
+.cs-outcome__design {
+  margin-bottom: var(--space-2xl);
+}
+/* Intro → impact strip → quote: 3.75rem (~60px at 16px root) via .cs-outcome__impact margins */
+.cs-outcome .cs-context__intro-p {
+  margin-bottom: 0;
+}
+.cs-outcome__impact {
+  margin-top: 3.75rem;
+  margin-bottom: 3.75rem;
+}
+.cs-outcome__impact:last-child {
+  margin-bottom: 0;
+}
+.cs-outcome__overview {
+  width: 100%;
+  margin-bottom: var(--cs-case-box-gap);
+}
+.cs-outcome__overview-frame {
+  position: relative;
+  width: 100%;
+  height: 56vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--cs-page-accent-solid) 8%, transparent);
+  border-radius: var(--radius);
+}
+@media (min-width: 56rem) {
+  .cs-outcome__overview-frame {
+    height: 72vh;
+  }
+}
+.cs-outcome__overview-frame::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--cs-page-accent-solid) 12%, transparent);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  /* Full-frame mask box + height-based scale keeps entire SVG silhouette visible (less cutoff than a short strip). */
+  -webkit-mask-size: auto min(52%, 22rem);
+  mask-size: auto min(52%, 22rem);
+  -webkit-mask-position: center bottom;
+  mask-position: center bottom;
+  transform-origin: center bottom;
+  animation:
+    cs-blob-float-unified 12s cubic-bezier(0.42, 0, 0.58, 1) infinite,
+    cs-blob-spin 60s linear infinite;
+}
+.page-case-study--1 .cs-outcome__overview-frame::after {
+  -webkit-mask-image: url("../images/blobs/blob-1.svg");
+  mask-image: url("../images/blobs/blob-1.svg");
+}
+.page-case-study--2 .cs-outcome__overview-frame::after {
+  -webkit-mask-image: url("../images/blobs/blob-2.svg");
+  mask-image: url("../images/blobs/blob-2.svg");
+  -webkit-mask-size: auto min(58%, 26rem);
+  mask-size: auto min(58%, 26rem);
+  -webkit-mask-position: 10% 100%;
+  mask-position: 10% 100%;
+  transform-origin: 10% 90%;
+}
+.page-case-study--3 .cs-outcome__overview-frame::after {
+  -webkit-mask-image: url("../images/blobs/blob-3.svg");
+  mask-image: url("../images/blobs/blob-3.svg");
+}
+.cs-outcome__overview-img {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  transform: rotate(-15deg);
+  transform-origin: center center;
+}
+.page-case-study--1 .cs-outcome__overview-img {
+  transform: rotate(-15deg) scale(1.3);
+  transform-origin: center 45%;
+}
+.page-case-study--2 .cs-outcome__overview-img {
+  transform: rotate(-15deg) scale(1.15);
+  transform-origin: center 45%;
+}
+.page-case-study--3 .cs-outcome__overview-img {
+  transform: rotate(-15deg) scale(1.4);
+  transform-origin: center 45%;
+}
+.cs-outcome__subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-lg);
+}
+.cs-final__grid {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 50rem) {
+  .cs-final__grid { grid-template-columns: repeat(3, 1fr); }
+}
+.cs-mock { display: flex; flex-direction: column; gap: var(--space-sm); }
+.cs-mock__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+.cs-mock__frame {
+  aspect-ratio: 4/3;
+  background: var(--color-border);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cs-mock__frame .placeholder {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+.cs-impact__grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 40rem) {
+  .cs-impact__grid { grid-template-columns: repeat(3, 1fr); }
+}
+.cs-impact__card {
+  padding: var(--space-lg);
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+.cs-impact__value {
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.1em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+.cs-impact__label {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Impact cards styled like context stats (case studies 1–3) */
+.page-case-study--1 .cs-impact__grid--stats-style,
+.page-case-study--2 .cs-impact__grid--stats-style,
+.page-case-study--3 .cs-impact__grid--stats-style {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--cs-case-box-gap);
+}
+.page-case-study--1 .cs-impact__grid--stats-style .cs-impact__card,
+.page-case-study--2 .cs-impact__grid--stats-style .cs-impact__card,
+.page-case-study--3 .cs-impact__grid--stats-style .cs-impact__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  text-align: left;
+}
+.page-case-study--1 .cs-impact__grid--stats-style .cs-impact__value,
+.page-case-study--2 .cs-impact__grid--stats-style .cs-impact__value,
+.page-case-study--3 .cs-impact__grid--stats-style .cs-impact__value {
+  font-family: var(--font-title);
+  font-size: var(--text-h4);
+  font-weight: 400;
+  line-height: 1.2em;
+  color: var(--color-text);
+  margin-bottom: 0;
+}
+.page-case-study--1 .cs-impact__grid--stats-style .cs-impact__label,
+.page-case-study--2 .cs-impact__grid--stats-style .cs-impact__label,
+.page-case-study--3 .cs-impact__grid--stats-style .cs-impact__label {
+  font-family: var(--font-sans);
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+/* --- Reflection --- */
+.cs-reflection {
+  padding: var(--space-3xl) var(--space-lg);
+  max-width: none;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+}
+.cs-reflection__quote {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  line-height: 1.3em;
+  font-style: italic;
+  text-align: left;
+  padding: 0;
+  border: none;
+}
+.cs-reflection__quote::before,
+.cs-reflection__quote::after { content: none; }
+
+.cs-reflection__body p {
+  margin: 0 0 var(--space-lg);
+  line-height: 1.6;
+}
+.cs-reflection__body p:last-child {
+  margin-bottom: 0;
+}
+.cs-reflection__body strong {
+  font-weight: 600;
+  color: color-mix(
+    in srgb,
+    var(--cs-page-accent-solid, var(--color-accent)) 80%,
+    transparent
+  );
+}

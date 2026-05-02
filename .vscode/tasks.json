@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open HTML in Simple Browser",
+      "type": "shell",
+      "command": "echo ${input:openSimpleBrowser}",
+      "presentation": { "reveal": "never" },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "openSimpleBrowser",
+      "type": "command",
+      "command": "simpleBrowser.api.open",
+      "args": ["http://127.0.0.1:5500"]
+    }
+  ]
+}

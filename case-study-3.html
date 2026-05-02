@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing Temporary Digital Identities for Safer Social Connections - Case Study 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Serif+Display&family=DM+Serif+Text:ital@0;1&family=DM+Mono:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/case-study.css">
+</head>
+<body class="page-case-study page-case-study--3">
+  <div class="reading-progress" role="progressbar" aria-label="Page reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="reading-progress__bar"></div>
+  </div>
+  <main>
+    <section class="cs-hero">
+      <div class="cs-hero__inner">
+        <div class="cs-hero__content">
+          <h1 class="cs-hero__title" data-stagger>You expose privacy every time you share a phone number, most people do it <span class="section-heading__accent">dozens of times a year</span></h1>
+          <p class="cs-hero__subtitle" data-stagger>With no way to revoke, expire, or limit what they've given away. This project rebuilt that assumption from the ground up.</p>
+        </div>
+      </div>
+      <div class="cs-hero__covers cs-hero__covers--stacked" aria-label="Project cover images">
+        <figure class="cs-hero__cover cs-hero__cover--1">
+          <img src="images/case-study-3/cover-1.png" alt="Case study cover 1">
+        </figure>
+        <figure class="cs-hero__cover cs-hero__cover--2">
+          <img src="images/case-study-3/cover-2.png" alt="Case study cover 2">
+        </figure>
+        <figure class="cs-hero__cover cs-hero__cover--3">
+          <img src="images/case-study-3/cover-3.png" alt="Case study cover 3">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-context">
+      <div class="cs-context__wrap">
+        <div class="cs-context__body">
+          <h6 class="cs-context__title">01 • Context & Problem</h6>
+          <h2 class="section-heading">Static identity in a <span class="section-heading__accent">contextual</span> world</h2>
+          <div class="cs-context__lead-row">
+            <h4 class="cs-context__lead">Most people already share different information in different situations, they just don't have tools that support it.</h4>
+            <p class="cs-context__intro-p">This isn't a niche privacy concern. It's the gap between how people think about sharing and what current tools actually let them do. The gap isn't awareness, it's infrastructure.</p>
+          </div>
+          <div class="cs-context__table-wrap">
+            <table class="cs-context__table">
+              <thead>
+                <tr>
+                  <th>Situation</th>
+                  <th>What people actually want to share</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Industry conference</td>
+                  <td>Work email, LinkedIn</td>
+                </tr>
+                <tr>
+                  <td>Social event</td>
+                  <td>Instagram, maybe a number</td>
+                </tr>
+                <tr>
+                  <td>Quick IRL meetup</td>
+                  <td>Something temporary, just for now</td>
+                </tr>
+                <tr>
+                  <td>Strangers nearby</td>
+                  <td>As little as possible, or nothing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <blockquote class="cs-context__quote"><p>Existing privacy tools solve the wrong problem. They focus on encryption and backend security, but users think in simpler terms: <strong>What can people see about me, and for how long?</strong></p></blockquote>
+          <p class="cs-context__problems-intro">Three specific problems made this worth solving:</p>
+        </div>
+        <aside class="cs-context__stats">
+          <div class="cs-stat">
+            <span class="cs-stat__value">🆔 Identity is permanent, interactions aren't</span>
+            <span class="cs-stat__label">Once contact information is shared, users lose control over it. There's no built-in way to limit duration or revoke access after the fact.</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat__value">🔐 Privacy tools are too technical</span>
+            <span class="cs-stat__label">Most solutions speak in permissions and encryption. Users just want to know: what can someone see about me right now?</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat__value">🔗 No support for contextual sharing</span>
+            <span class="cs-stat__label">There's no way to tailor identity to a situation, set a time limit, or control discoverability in a physical environment.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cs-role">
+      <div class="cs-inner">
+        <h6 class="section-title">02 • My Role</h6>
+        <h2 class="section-heading">End-to-end ownership, <span class="section-heading__accent">founder-level</span> collaboration</h2>
+        <div class="cs-role__body">
+          <p>The core Qi concept came from the founding team. Everything else, the identity system, the interaction model, the creation and lifecycle flows, the multi-channel sharing architecture, I designed from scratch. This meant moving between product strategy and pixel-level decisions on the same day.</p>
+          <p>I worked closely with the CEO to pressure-test the model conceptually, and with the frontend engineer to ensure the system could actually be built as designed. A lot of the important decisions happened at that intersection.</p>
+          <p class="cs-role__collaborators">
+            <strong>Collaborators:</strong>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">💼</span> CEO</span>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">💻</span> Frontend Engineer</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Challenges: expandable boxes (3–4 per project) -->
+    <section class="cs-challenges">
+      <div class="cs-inner">
+        <h6 class="section-title">03 • Design Challenges</h6>
+        <h2 class="section-heading">Designing something without <span class="section-heading__accent">a reference point</span></h2>
+        <div class="challenge-grid">
+          <div class="challenge-card">
+            <div class="challenge-tag">Flexibility vs. simplicity</div>
+            <h4>Configurable enough to be useful. Simple enough to use in 30 seconds.</h4>
+            <p>A Qi can include multiple contact fields, visibility rules, expiration windows, and discovery settings. The configuration space is large. The risk was creating something that felt more like a permissions dashboard than a social tool, especially for a product meant to be activated right before walking into a room.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-tag">Lifecycle behavior</div>
+            <h4>When a Qi changes, what happens to people who already have it?</h4>
+            <p>If a Qi behaves like a live profile, updates propagate instantly, powerful, but unpredictable from the sharer's perspective. If it behaves like a snapshot, it's more trustworthy but harder to maintain. Neither model was obviously right. The answer was a product values question about what kind of trust Cirqil was building, not a technical one.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-tag">Trust without precedent</div>
+            <h4>How do you build user trust for a concept that has never existed before?</h4>
+            <p>Users had no prior experience with temporary identity. Communicating how a Qi behaves, what it shares, who can see it, when it ends, had to happen through the product itself. There was no shorthand to borrow, no "like X but for Y" that would land.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-tag">Multi-context interaction</div>
+            <h4>The same identity system needs to work across Bluetooth, NFC, and direct link sharing.</h4>
+            <p>Different real-world situations call for different sharing mechanics. Designing one mechanism and forcing all contexts through it would have broken the core promise. Each channel needed its own interaction model, ambient, intentional, or asynchronous, without fragmenting the overall experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Decisions: split layout, text + table or visual (matches case study 2) -->
+    <section class="cs-decisions">
+      <div class="cs-inner">
+        <h6 class="section-title">04 • Key Decisions</h6>
+        <h2 class="section-heading">Four decisions that <span class="section-heading__accent">defined the system</span></h2>
+        <div class="cs-decisions__list cs-decisions__list--split">
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Frame creation around intent, not configuration</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>Early wireframes surfaced every option upfront, fields, visibility, expiry, discovery settings. It was complete. It was also exhausting.</p>
+                    <p>The shift was reframing the flow around three questions users naturally ask. This reframe didn't reduce flexibility, advanced controls are still accessible, but it changed the mental model from "configure privacy settings" to "set up a social identity." That distinction matters for whether anyone actually uses it.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <thead>
+                        <tr>
+                          <th>Intent question</th>
+                          <th>Maps to</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>What do you want to share?</td>
+                          <td>Contact fields</td>
+                        </tr>
+                        <tr>
+                          <td>In what situation?</td>
+                          <td>Context / Qi name</td>
+                        </tr>
+                        <tr>
+                          <td>For how long?</td>
+                          <td>Expiration</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--tilt cs-decision__frame--cs3-a">
+                  <img class="cs-decision__img--cs3-a" src="images/case-study-3/key-decision-a.png" alt="Draft Qi versus active discoverable state">
+                </div>
+              </div>
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Separate creation from activation</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>A created Qi is not the same as an active Qi. Users can build one in advance without becoming discoverable, and activate it only when ready.</p>
+                    <p>This does two things: it prevents accidental exposure, a real concern for a privacy tool, and it reinforces the intentional nature of sharing, which is core to Cirqil's value proposition. It also mirrors how people actually behave. You decide what to share before you walk into the room.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Design for the context, not just the feature</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>Different real-world situations call for different ways of connecting. Rather than designing one sharing mechanism and forcing all contexts through it, I designed three distinct modes. The interaction model varies by channel, Bluetooth is ambient and opt-in, NFC is deliberate and instant, username is persistent and low-friction. Matching the mechanic to the context was as important as the feature itself.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <thead>
+                        <tr>
+                          <th>Channel</th>
+                          <th>Mechanic</th>
+                          <th>Best for</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Nearby Discovery</td>
+                          <td>Bluetooth, passive</td>
+                          <td>Events, open networking</td>
+                        </tr>
+                        <tr>
+                          <td>NFC Tap</td>
+                          <td>Instant, intentional</td>
+                          <td>Quick one-to-one exchange</td>
+                        </tr>
+                        <tr>
+                          <td>Username / Link</td>
+                          <td>Persistent, low-friction</td>
+                          <td>Remote or async connections</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table cs-decision__frame--table-fixed-cols">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <caption class="cs-decision__table-caption">Conference Qi</caption>
+                      <thead>
+                        <tr>
+                          <th>What matters?</th>
+                          <th>Context</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Shares</td>
+                          <td>Work email + LinkedIn</td>
+                        </tr>
+                        <tr>
+                          <td>Visibility</td>
+                          <td>Within 20 meters</td>
+                        </tr>
+                        <tr>
+                          <td>Expires</td>
+                          <td>End of event</td>
+                        </tr>
+                        <tr>
+                          <td>Discovery</td>
+                          <td>Bluetooth</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <caption class="cs-decision__table-caption">Social Event Qi</caption>
+                      <thead>
+                        <tr>
+                          <th>What matters?</th>
+                          <th>Context</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Shares</td>
+                          <td>Instagram only</td>
+                        </tr>
+                        <tr>
+                          <td>Visibility</td>
+                          <td>Nearby</td>
+                        </tr>
+                        <tr>
+                          <td>Expires</td>
+                          <td>In 2 hours</td>
+                        </tr>
+                        <tr>
+                          <td>Discovery</td>
+                          <td>Bluetooth + NFC</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Expiration as a trust primitive</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>The core lifecycle question was whether a shared Qi should behave as a <strong>live profile</strong> or a <strong>snapshot</strong>.</p>
+                    <p>Making expiration the anchor, not just a setting, meant users could reason about their identity simply: <em>"It will stop being visible when I say it does."</em> That predictability is what makes the system feel safe enough to actually use.</p>
+                    <p>The insight: users don't need total control over every variable. They need one thing they can count on. Expiration is that thing.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome: final design + impact combined -->
+    <section class="cs-outcome">
+      <div class="cs-inner">
+        <h6 class="section-title">05 • Outcome</h6>
+        <h2 class="section-heading">A complete system, <span class="section-heading__accent">ready to build</span></h2>
+        <p class="cs-context__intro-p">By the time the team paused, the design was complete, end-to-end flows for creation, activation, discovery, connection, and expiration, across all three sharing channels. The system held up conceptually and was spec'd for development.</p>
+        <div class="cs-outcome__impact">
+          <div class="cs-outcome__overview">
+            <div class="cs-outcome__overview-frame">
+              <img class="cs-outcome__overview-img" src="images/case-study-3/outcome.png" alt="Cirqil identity system: end-to-end flows for Qi lifecycle and sharing channels from dev-ready specs.">
+            </div>
+          </div>
+          <div class="cs-impact__grid cs-impact__grid--stats-style">
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">🏗️ System design</span>
+              <p class="cs-impact__label">Full identity lifecycle defined, from Qi creation through expiration, including edge cases and update behavior.</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">🤝 Interaction model</span>
+              <p class="cs-impact__label">Three distinct sharing channels designed to match real-world contexts, not force all usage through a single pattern.</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">📐 Dev-ready specs</span>
+              <p class="cs-impact__label">Polished screens and specs delivered before the team paused, ready to hand off when the project restarts.</p>
+            </div>
+          </div>
+        </div>
+        <blockquote class="cs-context__quote">
+          <p>The team paused due to internal circumstances. The founder is actively seeking funding to restart development. The design system is complete and preserved, this project isn't finished, it's waiting.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="cs-reflection">
+      <div class="cs-inner">
+        <h6 class="section-title">06 • Reflection</h6>
+        <h2 class="section-heading">What this project changed about <span class="section-heading__accent">how I design</span></h2>
+        <div class="cs-reflection__body">
+          <p>Cirqil was a different kind of problem. There were no comparable products to reference, no established patterns to adapt. The hardest work wasn't visual, it was defining how a system should <em>behave</em> before I could design how it should <em>look</em>.</p>
+          <p><strong>01, The interaction model is the product.</strong> For Cirqil, getting the screens right was downstream of getting the lifecycle model right. The live vs. snapshot decision shaped every creation flow, every update interaction, every expiration state. Spending time on that before touching UI wasn't slowing down, it was the actual design work.</p>
+          <p><strong>02, Simplicity is about sequencing, not subtraction.</strong> I didn't remove features to make Qi creation feel simple. I changed the order and framing of decisions, surfacing intent-based questions first and deferring configuration to secondary flows. The system stayed just as capable; users just encountered its complexity at the right time.</p>
+          <p><strong>03, Trust comes from predictability, not just privacy.</strong> A system can be technically private but still feel unsafe to use if users can't predict how it behaves. Making expiration the one guaranteed anchor, the thing that always works, always ends access, gave the system a foundation users could reason about. That's a product values decision as much as a design one.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="site-footer-actions">
+    <a href="index.html#case-studies" class="hero__cta">← Back to work</a>
+  </div>
+  <footer class="site-footer">
+    <div class="site-footer__spheres" aria-hidden="true">
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+    </div>
+    <div class="site-footer__brand">
+      <h5 class="site-footer__tagline" aria-label="Every detail is a decision">Every <span class="site-footer__tagline-detail">detail</span><span class="site-footer__tagline-bridge"> is a </span><span class="site-footer__tagline-decision">decision</span></h5>
+      <p class="site-footer__copyright">© 2026 Child Li</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/case-study.js"></script>
+</body>
+</html>

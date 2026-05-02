@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing AI-Augmented Vendor Questionnaires - Case Study 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Serif+Display&family=DM+Serif+Text:ital@0;1&family=DM+Mono:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/case-study.css">
+</head>
+<body class="page-case-study page-case-study--2">
+  <div class="reading-progress" role="progressbar" aria-label="Page reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="reading-progress__bar"></div>
+  </div>
+  <main>
+    <section class="cs-hero">
+      <div class="cs-hero__inner">
+        <div class="cs-hero__content">
+          <h1 class="cs-hero__title" data-stagger>Compliance reviewer shouldn't need <span class="section-heading__accent">15 minutes</span> just to understand what a vendor is telling them.</h1>
+          <p class="cs-hero__subtitle" data-stagger>But with no evidence surfacing, no contradiction detection, and no triage signal across 50+ questions, that was the reality. This project fixed it.</p>
+        </div>
+      </div>
+      <div class="cs-hero__covers cs-hero__covers--stacked" aria-label="Project cover images">
+        <figure class="cs-hero__cover cs-hero__cover--1">
+          <img src="images/case-study-2/cover-1.png" alt="Case study cover 1">
+        </figure>
+        <figure class="cs-hero__cover cs-hero__cover--2">
+          <img src="images/case-study-2/cover-2.png" alt="Case study cover 2">
+        </figure>
+      </div>
+    </section>
+
+    <section class="cs-context">
+      <div class="cs-context__wrap">
+        <div class="cs-context__body">
+          <h6 class="cs-context__title">01 • Context & Problem</h6>
+          <h2 class="section-heading">A workflow built for <span class="section-heading__accent">output</span>, not reviewers</h2>
+          <div class="cs-context__lead-row">
+            <h4 class="cs-context__lead">The platform is a GRC (Governance, Risk & Compliance) tool used by banks, fintechs, and financial institutions to manage regulatory oversight.</h4>
+            <p>Its Vendor Due Diligence module allows organizations to send questionnaires, collect vendor responses and supporting evidence, evaluate risk, and approve or reject vendors. The review workflow was functional but never designed with the reviewer's workload in mind. Originally shaped by product and engineering decisions without dedicated design input, the interface was a basic table view with no intelligence, no triage, and no synthesis. Reviewers were left to make sense of everything alone, and it created three compounding friction points.</p>
+          </div>
+        </div>
+        <aside class="cs-context__stats">
+          <div class="cs-stat">
+            <span class="cs-stat__value">🔍 Manual evidence verification</span>
+            <span class="cs-stat__label">Reviewers had to open and search uploaded documents, SOC 2 reports, security policies, certifications, running 50 to 200 pages each, just to confirm whether a vendor's claims were supported anywhere.</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat__value">⚠️ Hidden contradictions</span>
+            <span class="cs-stat__label">Vendors sometimes provided answers that quietly conflicted with their own documentation. A questionnaire might say MFA is enforced for all employees while the security policy scoped it only to privileged accounts. Easy to miss. High risk if missed.</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat__value">🕐 Slow review cycles</span>
+            <span class="cs-stat__label">Reviewers were spending 15+ minutes on a small vendor questionnaire, not including ones with heavy clarifying questions. Across dozens of vendor reviews, that overhead compounds fast.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cs-role">
+      <div class="cs-inner">
+        <h6 class="section-title">02 • My Role</h6>
+        <h2 class="section-heading">Sole design lead,<br><span class="section-heading__accent">expert</span> collaboration</h2>
+        <div class="cs-role__body">
+          <p>I led this project as the sole product designer, partnering closely with our Head of Implementation and Director of Compliance. I ran discovery, defined the design direction, and owned the end-to-end UX from early concept through handoff to engineering.</p>
+          <p>To pressure-test the work, I brought in a second designer mid-process specifically to critique the flows and surface UX issues I might have been too close to catch. Collaboration was real throughout — but design ownership was mine.</p>
+          <p class="cs-role__collaborators">
+            <strong>Collaborators:</strong>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">⚙️</span> Head of Implementation</span>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">🛡️</span> Director of Compliance</span>
+            <span class="cs-role__collaborator"><span class="cs-role__collaborator-emoji" aria-hidden="true">🎨</span> Product Designer (critique)</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Challenges: expandable boxes (3–4 per project) -->
+    <section class="cs-challenges">
+      <div class="cs-inner">
+        <h6 class="section-title">03 • Design Challenges</h6>
+        <h2 class="section-heading">Designing AI that<br>earns <span class="section-heading__accent">trust</span></h2>
+        <div class="challenge-grid">
+          <div class="challenge-card">
+            <div class="challenge-tag">Trust in AI</div>
+            <h4>Earning stakeholder trust in AI accuracy.</h4>
+            <p>Early in the project, stakeholders raised legitimate concerns: how accurate would AI flagging actually be, especially for something as nuanced as detecting contradictions? To address this directly, I introduced an AI match score, a confidence indicator that shows how strongly the AI is mapping a flagged mismatch. The goal wasn't to claim 100% accuracy, but to give reviewers a meaningful signal about confidence level so they could calibrate how much weight to give each flag. This shifted the conversation from "can we trust the AI?" to "here's how to read what it's telling you", keeping human judgment at the center.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-tag">Human control</div>
+            <h4>Designing for human control in a regulated environment.</h4>
+            <p>Compliance reviewers are accountable for their decisions. They can't and won't hand that accountability to a system they don't fully understand. The design had to position AI clearly as an assistant, not a decision-maker. Every insight the AI surfaces is a starting point for human review, not a conclusion. Final ratings and vendor decisions remain entirely reviewer-controlled.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-tag">Technical constraints</div>
+            <h4>Technical constraints around contradiction detection.</h4>
+            <p>Of all the AI features, flagging mismatches was the most complex to implement. It required training the AI to recognize what counts as a contradiction across varied language, naming conventions, and question formats. This was the most time-intensive piece for engineering, and it shaped how I designed the feature, leaning into transparency (surfacing what the AI compared, not just what it concluded) to compensate for cases where the AI's categorization might need human interpretation.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="challenge-tag">Integration</div>
+            <h4>Integrating AI into a revamped module, not a legacy one.</h4>
+            <p>This wasn't a patch on top of an existing interface, it was a redesigned module with AI built in from the ground up. That gave us more design freedom, but also more responsibility to get the information architecture right. The challenge was making the AI layer feel native to the workflow, not bolted on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Decisions: always-visible list (no accordion) -->
+    <section class="cs-decisions">
+      <div class="cs-inner">
+        <h6 class="section-title">04 • Key Decisions</h6>
+        <h2 class="section-heading">Three decisions that<br>defined the <span class="section-heading__accent">system</span></h2>
+        <div class="cs-decisions__list cs-decisions__list--split">
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Embed AI at the question level, not as a separate panel.</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>The decision to surface AI insights within each individual question, rather than a separate AI dashboard, was deliberate. Reviewers needed intelligence where they were already working, not a context switch to a new surface.</p>
+                    <p>Questionnaires with 50+ questions per section don't benefit from a bird's-eye AI summary. They benefit from question-level triage, knowing exactly where to look and what to scrutinize.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--tilt">
+                  <img class="cs-decision__img--a" src="images/case-study-2/key-decision-a.png" alt="Question-level AI insights interface">
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--table">
+                  <div class="cs-decision__table-wrap">
+                    <table class="cs-context__table">
+                      <thead>
+                        <tr>
+                          <th>Insight Type</th>
+                          <th>Purpose</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>AI Summary</strong></td>
+                          <td>Concise synthesis of the vendor's response, surfacing key claims before the reviewer reads in full</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Evidence Found</strong></td>
+                          <td>Relevant excerpts from uploaded documents with document name and page reference</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Missing Evidence</strong></td>
+                          <td>Flags when a vendor's claim isn't supported by any uploaded documentation</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Contradiction Flags</strong></td>
+                          <td>Highlights conflicts between answers and documentation, with an AI match score indicating confidence</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Suggested Follow-Ups</strong></td>
+                          <td>Contextually relevant questions reviewers can send directly to vendors when a response is vague</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Five structured insight types, not freeform AI output.</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>Rather than letting the AI generate open-ended commentary, I defined five specific insight types that map directly to what reviewers actually need. Each type has a distinct purpose and visual treatment, reviewers always know what kind of signal they're reading.</p>
+                    <p>Structure over verbosity. Compliance reviewers don't need more text to read. They need the right signal, in the right place, at the right time.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="cs-decision cs-decision--split">
+            <div class="cs-decision__row">
+              <div class="cs-decision__content">
+                <div class="cs-decision__head-static">
+                  <h4 class="cs-decision__title">Evidence transparency as a non-negotiable.</h4>
+                </div>
+                <div class="cs-decision__body cs-decision__body--open">
+                  <div class="cs-decision__body-inner">
+                    <p>Every AI insight links back to the specific document, excerpt, and page it was drawn from. No black-box conclusions. Reviewers can verify, override, or dismiss any AI suggestion, and the interface makes that frictionless.</p>
+                    <p>This wasn't just a UX preference. It was a trust requirement for the environment we were designing for. In compliance, every decision needs to be defensible, and that starts with being able to see exactly what the AI saw.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="cs-decision__media">
+                <div class="cs-decision__frame cs-decision__frame--tilt">
+                  <img class="cs-decision__img--b" src="images/case-study-2/key-decision-b.png" alt="Evidence transparency interface">
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome: final design + impact combined -->
+    <section class="cs-outcome">
+      <div class="cs-inner">
+        <h6 class="section-title">05 • Outcome</h6>
+        <h2 class="section-heading">A process reviewers<br>immediately <span class="section-heading__accent">understood</span></h2>
+        <div class="cs-outcome__impact">
+          <div class="cs-outcome__overview">
+            <div class="cs-outcome__overview-frame">
+              <img class="cs-outcome__overview-img" src="images/case-study-2/outcome.png" alt="AI-augmented vendor questionnaire review: final screens showing reviewer workflow and accountability.">
+            </div>
+          </div>
+          <div class="cs-impact__grid cs-impact__grid--stats-style">
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">15+ min</span>
+              <p class="cs-impact__label">Baseline review time for a small questionnaire, drops noticeably with AI assistance</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">50+ questions</span>
+              <p class="cs-impact__label">Per section on heavy questionnaires, the exact scenario where AI triage compounds most</p>
+            </div>
+            <div class="cs-impact__card">
+              <span class="cs-impact__value">100%</span>
+              <p class="cs-impact__label">Positive reception across all prospect groups demonstrated to</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="cs-reflection">
+      <div class="cs-inner">
+        <h6 class="section-title">06 • Reflection</h6>
+        <h2 class="section-heading">What I learned about<br>designing for <span class="section-heading__accent">accountability</span></h2>
+        <div class="cs-reflection__body">
+          <p><strong>What this project reinforced about designing AI features.</strong> AI in compliance isn't about automation, it's about augmentation. The most important design decisions weren't about what the AI could do; they were about how to present what it found in a way that reviewers could trust, verify, and act on. Getting that right required as much thinking about human behavior as it did about the system's capabilities.</p>
+          <p><strong>What I'd push further.</strong> The AI match score was a pragmatic solution to a trust problem, and it worked. But it's still a proxy for confidence, not a full explanation. Given more runway, I'd explore ways to surface <em>why</em> the AI flagged something, not just <em>how confident</em> it is. That transparency layer would make the system more useful for edge cases and more defensible in audit contexts.</p>
+          <p><strong>What this taught me.</strong> Designing for regulated environments means designing for accountability, not just usability. Every feature decision carries weight beyond the interface, it shapes how reviewers document their work, how they explain their decisions, and ultimately how the organization manages risk. That's a responsibility worth designing to.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="site-footer-actions">
+    <a href="index.html#case-studies" class="hero__cta">← Back to work</a>
+  </div>
+  <footer class="site-footer">
+    <div class="site-footer__spheres" aria-hidden="true">
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+      <span class="site-footer__sphere"></span>
+    </div>
+    <div class="site-footer__brand">
+      <h5 class="site-footer__tagline" aria-label="Every detail is a decision">Every <span class="site-footer__tagline-detail">detail</span><span class="site-footer__tagline-bridge"> is a </span><span class="site-footer__tagline-decision">decision</span></h5>
+      <p class="site-footer__copyright">© 2026 Child Li</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/case-study.js"></script>
+</body>
+</html>
