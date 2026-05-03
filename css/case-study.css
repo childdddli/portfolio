@@ -83,8 +83,9 @@
 }
 /* Blob shape from SVG; fill = per–case-study tint (same as homepage card bg) */
 .cs-hero::before {
-  width: clamp(320px, 50vw, 800px);
-  height: clamp(320px, 50vw, 800px);
+  /* Grows on wide viewports; max 2× former 800px cap */
+  width: clamp(320px, min(50vw, 18vw + 480px), 1600px);
+  height: clamp(320px, min(50vw, 18vw + 480px), 1600px);
   top: 0;
   /* Shift ~10% of hero width past the right edge (blob sits further right) */
   right: -10%;
@@ -126,10 +127,13 @@
   align-self: end;
 }
 .cs-hero__covers {
-  /* Case study 1: stacked covers at top right */
+  /* Case study 1: stacked covers at top right; pull in on ultrawide, capped at +50vw */
   position: absolute;
   top: var(--space-2xl);
-  right: var(--space-lg);
+  right: calc(
+    var(--space-lg)
+    + min(50vw, max(0px, (100vw - min(90vw, 1600px)) / 2))
+  );
   z-index: 2;
 }
 .cs-hero__covers--stacked {
