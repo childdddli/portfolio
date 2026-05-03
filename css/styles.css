@@ -293,14 +293,18 @@ body:not(.page-case-study) .hero .hero__cta:visited {
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  height: 90vh;
+  height: auto;
   display: grid;
   gap: 1.5rem; /* 24px at 16px root, scales with font size */
   grid-template-columns: 1fr;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: auto;
 }
 @media (min-width: 48rem) {
-  .case-studies__grid { grid-template-columns: repeat(3, 1fr); }
+  .case-studies__grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    height: min(90vh, 52rem);
+  }
 }
 .case-card {
   display: flex;
@@ -351,7 +355,8 @@ body:not(.page-case-study) .hero .hero__cta:visited {
 .case-card__media {
   position: relative;
   width: 100%;
-  height: 30%;
+  height: auto;
+  flex: 0 0 auto;
   min-height: 0;
   padding: 0;
   display: flex;
@@ -431,10 +436,10 @@ body:not(.page-case-study) .hero .hero__cta:visited {
 .case-card__content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: var(--space-lg);
+  justify-content: flex-start;
+  gap: var(--space-md);
   padding: var(--space-lg);
-  height: 70%;
+  flex: 1 1 auto;
   min-height: 0;
   box-sizing: content-box;
 }
@@ -461,6 +466,9 @@ body:not(.page-case-study) .hero .hero__cta:visited {
     justify-content: flex-start;
     overflow: visible;
   }
+  .case-studies__grid .case-card__signals {
+    margin-top: 0;
+  }
 }
 
 .case-card__title {
@@ -476,6 +484,7 @@ body:not(.page-case-study) .hero .hero__cta:visited {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.35rem;
+  margin-top: auto;
 }
 .case-card__signal {
   display: inline-block;
@@ -1063,9 +1072,11 @@ body:not(.page-case-study) .hero .hero__cta:visited {
 .site-footer__spheres {
   position: absolute;
   top: -12rem;
-  left: -5rem;
-  right: -5rem;
+  left: 50%;
+  right: auto;
   bottom: 0;
+  width: min(100vw, calc(1600px + 10rem));
+  transform: translateX(-50%);
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
