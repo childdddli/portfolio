@@ -404,7 +404,7 @@ body:not(.page-case-study) .hero .hero__cta:visited {
   display: block;
 }
 .case-studies__grid .case-card:nth-child(3) .case-card__mock img {
-  object-position: top left;
+  object-position: center center;
 }
 .case-card__mock .placeholder {
   font-family: var(--font-subtitle);
