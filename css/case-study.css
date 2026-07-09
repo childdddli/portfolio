@@ -205,43 +205,39 @@
   display: none;
 }
 
-/* Case study 3: parallel covers (3 side by side) */
+/* Case study 3: single hero cover */
 .page-case-study--3 .cs-hero__covers {
-  flex-direction: row;
+  display: flex;
   align-items: flex-start;
-  gap: var(--space-sm);
+  top: calc(var(--space-2xl) + 20vh);
+  right: 0;
 }
-.page-case-study--3 .cs-hero__cover {
-  width: 12vw;
+.page-case-study--3 .cs-hero__cover.cs-hero__cover--single {
+  width: 48vw;
+  max-width: none;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 24px 0 rgba(77, 74, 236, 0.10);
+  box-shadow: none;
   flex-shrink: 0;
   transform: rotate(8deg);
-}
-.page-case-study--3 .cs-hero__cover--1 {
   margin: 0;
-  margin-top: 0;
   z-index: 1;
   position: relative;
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  min-height: 0;
 }
-.page-case-study--3 .cs-hero__cover--2 {
-  margin: 0;
-  margin-top: 40px;
-  z-index: 1;
-  position: relative;
-}
-.page-case-study--3 .cs-hero__cover--3 {
-  margin: 0;
-  margin-top: 80px;
-  z-index: 1;
-  position: relative;
-}
-.page-case-study--3 .cs-hero__cover img {
+.page-case-study--3 .cs-hero__cover.cs-hero__cover--single img {
   width: 100%;
   height: auto;
+  max-height: none;
+  object-fit: contain;
   display: block;
   vertical-align: middle;
+  box-shadow: none;
+  filter: none;
+  transform: none;
 }
 .page-case-study--3 .cs-hero__covers:not(:has(img)) {
   display: none;
@@ -1187,6 +1183,16 @@
 .page-case-study--3 .cs-decision__frame--cs3-a {
   align-items: center;
   justify-content: center;
+  aspect-ratio: auto;
+}
+.page-case-study--3 .cs-decision__frame--cs3-a .cs-decision__img--cs3-a {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  transform: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 .page-case-study .cs-decision__frame.cs-decision__frame--table {
   align-items: stretch;
