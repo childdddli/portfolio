@@ -498,7 +498,7 @@
   letter-spacing: 0.06em;
 }
 
-/* Section heading (h2) — DM Serif Text, shown under each subtitle */
+/* Section heading (h2) — DM Sans, shown under each subtitle */
 .section-heading {
   font-family: var(--font-title);
   font-size: var(--text-h2);
@@ -768,7 +768,7 @@
 .cs-context__quote::before {
   content: "\201C";
   flex-shrink: 0;
-  font-family: "DM Serif Display", "DM Serif Text", Georgia, serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   font-size: 4em;
   line-height: 1;
   font-style: normal;

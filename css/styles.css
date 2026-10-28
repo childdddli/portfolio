@@ -18,7 +18,7 @@
   --color-accent-2-solid: #0029FF;
   --color-accent-3-solid: #0085FF;
   --color-accent-4-solid: #00ffff;
-  --font-title: "DM Serif Text", Georgia, serif;
+  --font-title: "DM Sans", system-ui, sans-serif;
   --font-subtitle: "DM Mono", ui-monospace, monospace;
   --font-sans: "DM Sans", system-ui, sans-serif;
   --space-xs: 0.5rem;
